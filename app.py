@@ -3,6 +3,7 @@ import joblib
 import pandas as pd
 from datetime import datetime
 import os
+import numpy as np
 
 app = Flask(__name__)
 
@@ -57,7 +58,7 @@ def predict():
     # print(input_data)
 
     # Make predictions using the loaded model
-    prediction = catboost_model.predict(input_data)
+    prediction = np.around(catboost_model.predict(input_data) * 100, decimals=2)
 
     # Return the prediction as the API response
     return jsonify({'prediction': prediction.tolist()})
