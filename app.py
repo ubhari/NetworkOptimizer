@@ -21,7 +21,7 @@ def predict():
     # Get custom input data from the request
     data = request.form.to_dict()
 
-    # print(data)
+    print(data)
 
     # Set default values for non-existing checkbox keys
     checkbox_keys = ['Application_Type_Video_Call',
@@ -53,15 +53,17 @@ def predict():
     # Convert data to DataFrame
     input_data = pd.DataFrame([data])
 
-    # print(input_data.columns)
+    print(input_data.columns)
 
-    # print(input_data)
+    print(input_data)
 
     # Make predictions using the loaded model
-    prediction = np.around(catboost_model.predict(input_data) * 100, decimals=2)
+    prediction = np.around(catboost_model.predict(input_data) * 100, decimals=2) 
+
+    # print(prediction)
 
     # Return the prediction as the API response
     return jsonify({'prediction': prediction.tolist()})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+    app.run(debug=False)
