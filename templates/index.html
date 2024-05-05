@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Model Prediction</title>
-
-   <link rel="stylesheet" href="/static/styles.css" />
+   <link rel="stylesheet" href="styles.css" />
+   <link
+            rel="icon"
+            href="icon.png"
+            type="image/x-icon"
+        />
 </head>
-<body style="background: #fbe3fc;">
+<body>
+    <div id="blur-background"></div>
   <div id="form" style="font-family:'Open Sans Condensed', sans-serif;
   width: 800px; /* Increased width to fit */
   min-width: 250px;
@@ -19,7 +24,7 @@
                 <div class="range-slider-container">
                     <div class="range-slider grad" style='--min:-5; --max:5; --step1:0.000001; --value1:0; --text-value1:0; --prefix1:""'>
                         <label for="signal-strength">Signal Strength:</label>
-                        <input type="range" min="0" max="5" name="Signal_Strength" step="0.000001" value="0" id="sliderValue1" oninput="updateSliderValue(this, 1); updateTextFieldValue(this, 1)">
+                        <input type="range" min="-5" max="5" step="0.000001" name="Signal_Strength" value="0" id="sliderValue1" oninput="updateSliderValue(this, 1); updateTextFieldValue(this, 1)">
                         <output id="output1"></output>
                         <div class="range-slider__value" id="rangeValue1">0</div> <!-- Added -->
                         <div class='range-slider__progress'></div>
@@ -28,9 +33,9 @@
                 </div>
 
                 <div class="range-slider-container">
-                    <div class="range-slider grad" style='--min:-3; --max:5; --step2:0.000001; --value2:0; --text-value2:0;  --prefix2:""'>
+                    <div class="range-slider grad" style='--min:-5; --max:5; --step2:0.000001; --value2:0; --text-value2:0;  --prefix2:""'>
                         <label for="latency">Latency:</label>
-                        <input type="range" min="0" max="5" name="Latency" step="0.000001" value="0" id="sliderValue2" oninput="updateSliderValue(this, 2); updateTextFieldValue(this, 2)">
+                        <input type="range" min="-5" max="5" step="0.000001" name="Latnecy" value="0" id="sliderValue2" oninput="updateSliderValue(this, 2); updateTextFieldValue(this, 2)">
                         <output id="output2"></output>
                         <div class="range-slider__value" id="rangeValue2">0</div> <!-- Added -->
                         <div class='range-slider__progress'></div>
@@ -120,9 +125,9 @@
                 
                 
                 <div class="range-slider-container">
-                  <div class="range-slider grad" style='--min:0; --max:5; --step3:0.01; --value3:0; --text-value3:0; --prefix3:""'>
+                  <div class="range-slider grad" style='--min:-5; --max:5; --step3:0.01; --value3:0; --text-value3:0; --prefix3:""'>
                       <label for="bandwidth-utilization">Bandwidth Utilization:</label>
-                      <input type="range" min="0" max="1" step="0.01" value="0" name="Bandwidth_Utilization_Ratio" id="sliderValue3" oninput="updateSliderValue(this, 3); updateTextFieldValue(this, 3)">
+                      <input type="range" min="-5" max="5" step="0.01" name="Bandwidth_Utilization_Ratio" value="0" id="sliderValue3" oninput="updateSliderValue(this, 3); updateTextFieldValue(this, 3)">
                       <output id="output3"></output>
                       <div class="range-slider__value" id="rangeValue3">0</div> <!-- Added -->
                       <div class='range-slider__progress'></div>
@@ -134,9 +139,10 @@
               <button type="submit">Predict</button>
           </form>
       </div>
-  </div>
+      
   <div id="prediction-result"></div>
-  <script src="/static/script.js"></script>
+  </div>
+  <script src="script.js"></script>
   
 </body>
 </html>
